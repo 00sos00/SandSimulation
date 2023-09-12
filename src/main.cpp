@@ -1,36 +1,20 @@
 #include <iostream>
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
+#include "Game.h"
 
 int main() {
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    Game* game = new Game(800, 600, "Sand Simulation", 3, 3);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Sand Simulation", NULL, NULL);
+    int windowWidth = 0, windowHeight = 0;
+    while (!glfwWindowShouldClose(game->window)) {
+        glfwGetWindowSize(game->window, &windowWidth, &windowHeight);
+        glViewport(0, 0, windowWidth, windowHeight);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-	if (!window) {
-		std::cout << "Failed to create GLFW Window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-
-	glfwMakeContextCurrent(window);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-
-	// TODO: Initialize other stuff...
-
-    while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(game->window);
     }
 
     glfwTerminate();
+    delete game;
 }

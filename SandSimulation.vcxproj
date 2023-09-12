@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

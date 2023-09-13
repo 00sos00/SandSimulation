@@ -1,6 +1,6 @@
 #pragma once
 
-const char* quad_frag_shader = R"glsl(
+const char* quadFragShaderSrc = R"glsl(
 #version 330 core
 
 out vec4 FragColor;

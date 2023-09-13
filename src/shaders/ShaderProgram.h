@@ -1,6 +1,5 @@
 #pragma once
 #include <unordered_map>
-#include <initializer_list>
 
 class ShaderProgram {
 private:
@@ -8,11 +7,10 @@ private:
 	std::unordered_map<const char*, int> uniformLocations;
 
 public:
-	ShaderProgram(unsigned int vertexShader, unsigned int fragmentShader);
-	~ShaderProgram();
+	using ShaderSrcs = std::initializer_list<const char*>;
 
-	static unsigned int createShader(const char* src, GLenum type);
-	static unsigned int createShader(std::initializer_list<const char*> srcs, GLenum type);
+	ShaderProgram(ShaderSrcs vertexSrcs, ShaderSrcs fragmentSrcs);
+	~ShaderProgram();
 
 	int getUniformLocation(const char* uniformName);
 

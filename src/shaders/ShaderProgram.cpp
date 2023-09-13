@@ -49,17 +49,7 @@ void checkLinkage(unsigned int program) {
     }
 }
 
-unsigned int ShaderProgram::createShader(const char* src, GLenum type) {
-    unsigned int shader = glCreateShader(type);
-    glShaderSource(shader, 1, &src, NULL);
-    glCompileShader(shader);
-
-    checkCompilation(shader, type);
-
-    return shader;
-}
-
-unsigned int ShaderProgram::createShader(std::initializer_list<const char*> srcs, GLenum type) {
+unsigned int createShader(ShaderProgram::ShaderSrcs srcs, GLenum type) {
     unsigned int shader = glCreateShader(type);
     glShaderSource(shader, srcs.size(), srcs.begin(), NULL);
     glCompileShader(shader);
@@ -69,7 +59,9 @@ unsigned int ShaderProgram::createShader(std::initializer_list<const char*> srcs
     return shader;
 }
 
-ShaderProgram::ShaderProgram(unsigned int vertexShader, unsigned int fragmentShader) {
+ShaderProgram::ShaderProgram(ShaderProgram::ShaderSrcs vertexSrcs, ShaderProgram::ShaderSrcs fragmentSrcs) {
+    unsigned int vertexShader = createShader(vertexSrcs, GL_VERTEX_SHADER);
+    unsigned int fragmentShader = createShader(fragmentSrcs, GL_FRAGMENT_SHADER);
     unsigned int _id = glCreateProgram();
 
     glAttachShader(_id, vertexShader);

@@ -1,6 +1,6 @@
 #pragma once
 
-const char* quad_vert_shader = R"glsl(
+const char* quadVertShaderSrc = R"glsl(
 #version 330 core
 
 layout (location = 0) in vec3 vPos;

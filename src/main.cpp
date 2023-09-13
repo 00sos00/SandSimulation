@@ -1,16 +1,14 @@
 #include <iostream>
 #include "Game.h"
 #include "shaders\ShaderProgram.h"
-#include "shaders\quad_vert_shader.h"
-#include "shaders\quad_frag_shader.h"
+#include "shaders\quadVertShaderSrc.h"
+#include "shaders\quadFragShaderSrc.h"
 #include "elements\QuadMesh.h"
 
 int main() {
     Game* game = new Game(800, 600, "Sand Simulation", 3, 3);
 
-    unsigned int quadVertexShader = ShaderProgram::createShader(quad_vert_shader, GL_VERTEX_SHADER);
-    unsigned int quadFragmentShader = ShaderProgram::createShader(quad_frag_shader, GL_FRAGMENT_SHADER);
-    ShaderProgram quadProgram(quadVertexShader, quadFragmentShader);
+    ShaderProgram quadProgram({ quadVertShaderSrc }, { quadFragShaderSrc });
 
     int quadVao = QuadMesh::generateVao();
 

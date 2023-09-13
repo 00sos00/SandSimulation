@@ -166,8 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\elements\QuadMesh.h" />
-    <ClInclude Include="src\shaders\quad_frag_shader.h" />
-    <ClInclude Include="src\shaders\quad_vert_shader.h" />
+    <ClInclude Include="src\shaders\quadFragShaderSrc.h" />
+    <ClInclude Include="src\shaders\quadVertShaderSrc.h" />
     <ClInclude Include="src\shaders\ShaderProgram.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

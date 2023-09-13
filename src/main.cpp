@@ -8,9 +8,9 @@
 int main() {
     Game* game = new Game(800, 600, "Sand Simulation", 3, 3);
 
-    unsigned int vertexShader = ShaderProgram::createShader(quad_vert_shader, GL_VERTEX_SHADER);
-    unsigned int fragmentShader = ShaderProgram::createShader(quad_frag_shader, GL_FRAGMENT_SHADER);
-    ShaderProgram quadProgram(vertexShader, fragmentShader);
+    unsigned int quadVertexShader = ShaderProgram::createShader(quad_vert_shader, GL_VERTEX_SHADER);
+    unsigned int quadFragmentShader = ShaderProgram::createShader(quad_frag_shader, GL_FRAGMENT_SHADER);
+    ShaderProgram quadProgram(quadVertexShader, quadFragmentShader);
 
     int quadVao = QuadMesh::generateVao();
 

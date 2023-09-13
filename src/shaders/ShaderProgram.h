@@ -4,7 +4,7 @@
 
 class ShaderProgram {
 private:
-	unsigned int id;
+	unsigned int id = 0;
 	std::unordered_map<const char*, int> uniformLocations;
 
 public:

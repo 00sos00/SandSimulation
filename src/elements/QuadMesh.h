@@ -14,25 +14,22 @@ namespace QuadMesh {
 	};
 
 	unsigned int generateVao() {
-		unsigned int QuadVao = 0;
-		glGenVertexArrays(1, &QuadVao);
-		glBindVertexArray(QuadVao);
+		unsigned int quadVao = 0;
+		glGenVertexArrays(1, &quadVao);
+		glBindVertexArray(quadVao);
 
-		unsigned int QuadVbo = 0;
-		glGenBuffers(1, &QuadVbo);
-		glBindBuffer(GL_ARRAY_BUFFER, QuadVbo);
+		unsigned int quadVbo = 0;
+		glGenBuffers(1, &quadVbo);
+		glBindBuffer(GL_ARRAY_BUFFER, quadVbo);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(VERTICES), VERTICES, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
-		unsigned int QuadEbo = 0;
-		glGenBuffers(1, &QuadEbo);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, QuadEbo);
+		unsigned int quadEbo = 0;
+		glGenBuffers(1, &quadEbo);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quadEbo);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(INDICES), INDICES, GL_STATIC_DRAW);
 
-		glBindVertexArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-		return QuadVao;
+		return quadVao;
 	}
 }
